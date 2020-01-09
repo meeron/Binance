@@ -31,6 +31,11 @@ namespace Binance
         public virtual decimal Quantity { get; set; }
 
         /// <summary>
+        /// Get or set the quote order quantity.
+        /// </summary>
+        public virtual decimal QuoteOrderQuantity { get; set; }
+
+        /// <summary>
         /// Get or set the client order ID (newClientOrderId).
         /// NOTE: This value is set internally after order placement.
         /// </summary>

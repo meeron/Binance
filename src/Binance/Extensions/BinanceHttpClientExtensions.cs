@@ -494,6 +494,7 @@ namespace Binance
         /// <param name="type"></param>
         /// <param name="quantity"></param>
         /// <param name="price"></param>
+        /// <param name="quoteOrderQty"></param>
         /// <param name="newClientOrderId">A unique id for the order. Automatically generated if not sent.</param>
         /// <param name="timeInForce"></param>
         /// <param name="stopPrice">Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.</param>
@@ -503,13 +504,13 @@ namespace Binance
         /// <param name="newOrderRespType">Set the response JSON.</param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static async Task<string> PlaceOrderAsync(this IBinanceHttpClient client, IBinanceApiUser user, string symbol, OrderSide side, OrderType type, decimal quantity, decimal price, string newClientOrderId = null, TimeInForce? timeInForce = null, decimal stopPrice = 0, decimal icebergQty = 0, long recvWindow = default, bool isTestOnly = false, PlaceOrderResponseType newOrderRespType = PlaceOrderResponseType.Result, CancellationToken token = default)
+        public static async Task<string> PlaceOrderAsync(this IBinanceHttpClient client, IBinanceApiUser user, string symbol, OrderSide side, OrderType type, decimal quantity, decimal price, decimal quoteOrderQty, string newClientOrderId = null, TimeInForce? timeInForce = null, decimal stopPrice = 0, decimal icebergQty = 0, long recvWindow = default, bool isTestOnly = false, PlaceOrderResponseType newOrderRespType = PlaceOrderResponseType.Result, CancellationToken token = default)
         {
             Throw.IfNull(client, nameof(client));
             Throw.IfNull(user, nameof(user));
             Throw.IfNullOrWhiteSpace(symbol, nameof(symbol));
 
-            if (quantity <= 0)
+            if (quoteOrderQty <= 0 && quantity <= 0)
                 throw new ArgumentException("Order quantity must be greater than 0.", nameof(quantity));
 
             if (recvWindow == default)
@@ -530,7 +531,12 @@ namespace Binance
             request.AddParameter("side", side.ToString().ToUpperInvariant());
             request.AddParameter("type", type.AsString());
             request.AddParameter("newOrderRespType", newOrderRespType.ToString().ToUpperInvariant());
-            request.AddParameter("quantity", quantity);
+
+            if (quantity > 0)
+                request.AddParameter("quantity", quantity);
+
+            if (quoteOrderQty > 0)
+                request.AddParameter("quoteOrderQty", quoteOrderQty);
 
             if (price > 0)
                 request.AddParameter("price", price);

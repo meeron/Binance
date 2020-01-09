@@ -495,7 +495,7 @@ namespace Binance
 
             // Place the order.
             var json = await HttpClient.PlaceOrderAsync(clientOrder.User, clientOrder.Symbol, clientOrder.Side.Value, clientOrder.Type,
-                clientOrder.Quantity, limitOrder?.Price ?? 0, clientOrder.Id, clientOrder.Type == OrderType.LimitMaker ? null : limitOrder?.TimeInForce,
+                clientOrder.Quantity, limitOrder?.Price ?? 0, clientOrder.QuoteOrderQuantity, clientOrder.Id, clientOrder.Type == OrderType.LimitMaker ? null : limitOrder?.TimeInForce,
                 stopOrder?.StopPrice ?? 0, limitOrder?.IcebergQuantity ?? 0, recvWindow, false, PlaceOrderResponseType.Full, token);
 
             try
@@ -524,7 +524,7 @@ namespace Binance
 
             // Place the TEST order.
             var json = await HttpClient.PlaceOrderAsync(clientOrder.User, clientOrder.Symbol, clientOrder.Side.Value, clientOrder.Type,
-                clientOrder.Quantity, limitOrder?.Price ?? 0, clientOrder.Id, clientOrder.Type == OrderType.LimitMaker ? null : limitOrder?.TimeInForce,
+                clientOrder.Quantity, limitOrder?.Price ?? 0, clientOrder.QuoteOrderQuantity, clientOrder.Id, clientOrder.Type == OrderType.LimitMaker ? null : limitOrder?.TimeInForce,
                 stopOrder?.StopPrice ?? 0, limitOrder?.IcebergQuantity ?? 0, recvWindow, true, PlaceOrderResponseType.Ack, token);
 
             if (json != BinanceHttpClient.SuccessfulTestResponse)
