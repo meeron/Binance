@@ -36,6 +36,10 @@ namespace Binance.WebSocket
             : this(new DepthClient(), new BinanceWebSocketStreamPublisher())
         { }
 
+        public DepthWebSocketClient(UpdateSpeed updateSpeed)
+            : this(new DepthClient(null, updateSpeed), new BinanceWebSocketStreamPublisher())
+        { }
+
         /// <summary>
         /// The DI constructor.
         /// </summary>

@@ -53,11 +53,12 @@ namespace Binance.Tests.Api
             var orderSide = OrderSide.Sell;
             var orderType = OrderType.Market;
             decimal quantity = 1;
+            decimal quoteOrderQty = 0;
             decimal price = 0;
 
-            await Assert.ThrowsAsync<ArgumentNullException>("user", () => _client.PlaceOrderAsync(null, symbol, orderSide, orderType, quantity, price));
-            await Assert.ThrowsAsync<ArgumentNullException>("symbol", () => _client.PlaceOrderAsync(user, null, orderSide, orderType, quantity, price));
-            await Assert.ThrowsAsync<ArgumentException>("quantity", () => _client.PlaceOrderAsync(user, symbol, orderSide, orderType, -1, price));
+            await Assert.ThrowsAsync<ArgumentNullException>("user", () => _client.PlaceOrderAsync(null, symbol, orderSide, orderType, quantity, price, quoteOrderQty));
+            await Assert.ThrowsAsync<ArgumentNullException>("symbol", () => _client.PlaceOrderAsync(user, null, orderSide, orderType, quantity, price, quoteOrderQty));
+            await Assert.ThrowsAsync<ArgumentException>("quantity", () => _client.PlaceOrderAsync(user, symbol, orderSide, orderType, -1, price, quoteOrderQty));
         }
 
         [Fact]

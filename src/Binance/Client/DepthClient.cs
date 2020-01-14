@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Binance.WebSocket;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 
@@ -18,15 +19,20 @@ namespace Binance.Client
 
         #endregion Public Events
 
+        private readonly UpdateSpeed _updateSpeed;
+
         #region Constructors
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="logger"></param>
-        public DepthClient(ILogger<DepthClient> logger = null)
+        /// <param name="updateSpeed"></param>
+        public DepthClient(ILogger<DepthClient> logger = null, UpdateSpeed updateSpeed = UpdateSpeed.Default)
             : base(logger)
-        { }
+        {
+            _updateSpeed = updateSpeed;
+        }
 
         #endregion Construtors
 
@@ -38,11 +44,17 @@ namespace Binance.Client
         /// <param name="symbol"></param>
         /// <param name="limit"></param>
         /// <returns></returns>
-        public static string GetStreamName(string symbol, int limit = default)
+        public static string GetStreamName(string symbol, int limit = default, UpdateSpeed updateSpeed = UpdateSpeed.Default)
         {
             Throw.IfNullOrWhiteSpace(symbol, nameof(symbol));
 
-            return limit > 0 ? $"{symbol.ToLowerInvariant()}@depth{limit}" : $"{symbol.ToLowerInvariant()}@depth";
+            var updateSpeedPart = string.Empty;
+            if (updateSpeed != UpdateSpeed.Default)
+            {
+                updateSpeedPart = $"@{(int)updateSpeed}ms";
+            }
+
+            return limit > 0 ? $"{symbol.ToLowerInvariant()}@depth{limit}{updateSpeedPart}" : $"{symbol.ToLowerInvariant()}@depth{updateSpeedPart}";
         }
 
         public virtual IDepthClient Subscribe(string symbol, int limit, Action<DepthUpdateEventArgs> callback)
@@ -51,9 +63,9 @@ namespace Binance.Client
 
             symbol = symbol.FormatSymbol();
 
-            Logger?.LogDebug($"{nameof(DepthClient)}.{nameof(Subscribe)}: \"{symbol}\" \"{limit}\" (callback: {(callback == null ? "no" : "yes")}).  [thread: {Thread.CurrentThread.ManagedThreadId}]");
+            Logger?.LogDebug($"{nameof(DepthClient)}.{nameof(Subscribe)}: \"{symbol}\" \"{limit}\" \"{_updateSpeed}\" (callback: {(callback == null ? "no" : "yes")}).  [thread: {Thread.CurrentThread.ManagedThreadId}]");
 
-            SubscribeStream(GetStreamName(symbol, limit), callback);
+            SubscribeStream(GetStreamName(symbol, limit, _updateSpeed), callback);
 
             return this;
         }
@@ -64,9 +76,9 @@ namespace Binance.Client
 
             symbol = symbol.FormatSymbol();
 
-            Logger?.LogDebug($"{nameof(DepthClient)}.{nameof(Unsubscribe)}: \"{symbol}\" \"{limit}\" (callback: {(callback == null ? "no" : "yes")}).  [thread: {Thread.CurrentThread.ManagedThreadId}]");
+            Logger?.LogDebug($"{nameof(DepthClient)}.{nameof(Unsubscribe)}: \"{symbol}\" \"{limit}\" \"{_updateSpeed}\" (callback: {(callback == null ? "no" : "yes")}).  [thread: {Thread.CurrentThread.ManagedThreadId}]");
 
-            UnsubscribeStream(GetStreamName(symbol, limit), callback);
+            UnsubscribeStream(GetStreamName(symbol, limit, _updateSpeed), callback);
 
             return this;
         }
