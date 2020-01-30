@@ -406,6 +406,7 @@ namespace Binance
                         {
                             var status = jToken["status"].Value<string>().ConvertSymbolStatus();
                             var icebergAllowed = jToken["icebergAllowed"].Value<bool>();
+                            var quoteOrderQtyMarketAllowed = jToken["quoteOrderQtyMarketAllowed"].Value<bool>();
 
                             // HACK: Support inconsistent precision naming and possible future changes.
                             var baseAssetPrecision = jToken["baseAssetPrecision"]?.Value<int>() ?? jToken["basePrecision"]?.Value<int>() ?? 0;
@@ -451,7 +452,16 @@ namespace Binance
                                 minNotional = minNotionalFilter["minNotional"].Value<decimal>();
                             }
 
-                            var symbol = new Symbol(status, baseAsset, quoteAsset, (baseMinQty, baseMaxQty, baseIncrement), new PriceRange(this, jToken["symbol"].Value<string>(), multiplierUp, multiplierDown, quoteIncrement), minNotional, icebergAllowed, orderTypes);
+                            var symbol = new Symbol(
+                                status,
+                                baseAsset,
+                                quoteAsset,
+                                (baseMinQty, baseMaxQty, baseIncrement),
+                                new PriceRange(this, jToken["symbol"].Value<string>(), multiplierUp, multiplierDown, quoteIncrement),
+                                minNotional,
+                                icebergAllowed,
+                                orderTypes,
+                                quoteOrderQtyMarketAllowed);
 
                             if (symbol.ToString() == jToken["symbol"].Value<string>())
                                 return symbol;

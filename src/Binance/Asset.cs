@@ -15,7 +15,7 @@ namespace Binance
         /// <summary>
         /// When the assets were last updated.
         /// </summary>
-        public static readonly long LastUpdateAt = 1568989078690;
+        public static readonly long LastUpdateAt = 1580402513533;
 
         public static Asset ADA => Cache.Get("ADA");
         public static Asset ADX => Cache.Get("ADX");
@@ -29,16 +29,20 @@ namespace Binance
         public static Asset ARDR => Cache.Get("ARDR");
         public static Asset ARK => Cache.Get("ARK");
         public static Asset ARN => Cache.Get("ARN");
+        public static Asset ARPA => Cache.Get("ARPA");
         public static Asset AST => Cache.Get("AST");
         public static Asset ATOM => Cache.Get("ATOM");
         public static Asset BAND => Cache.Get("BAND");
         public static Asset BAT => Cache.Get("BAT");
         public static Asset BCC => Cache.Get("BCC");
         public static Asset BCD => Cache.Get("BCD");
+        public static Asset BCH => Cache.Get("BCH");
         public static Asset BCHABC => Cache.Get("BCHABC");
         public static Asset BCHSV => Cache.Get("BCHSV");
         public static Asset BCN => Cache.Get("BCN");
         public static Asset BCPT => Cache.Get("BCPT");
+        public static Asset BEAM => Cache.Get("BEAM");
+        public static Asset BEAR => Cache.Get("BEAR");
         public static Asset BGBP => Cache.Get("BGBP");
         public static Asset BLZ => Cache.Get("BLZ");
         public static Asset BNB => Cache.Get("BNB");
@@ -50,6 +54,7 @@ namespace Binance
         public static Asset BTG => Cache.Get("BTG");
         public static Asset BTS => Cache.Get("BTS");
         public static Asset BTT => Cache.Get("BTT");
+        public static Asset BULL => Cache.Get("BULL");
         public static Asset BUSD => Cache.Get("BUSD");
         public static Asset CDT => Cache.Get("CDT");
         public static Asset CELR => Cache.Get("CELR");
@@ -60,6 +65,7 @@ namespace Binance
         public static Asset CND => Cache.Get("CND");
         public static Asset COCOS => Cache.Get("COCOS");
         public static Asset COS => Cache.Get("COS");
+        public static Asset CTXC => Cache.Get("CTXC");
         public static Asset CVC => Cache.Get("CVC");
         public static Asset DASH => Cache.Get("DASH");
         public static Asset DATA => Cache.Get("DATA");
@@ -70,6 +76,7 @@ namespace Binance
         public static Asset DNT => Cache.Get("DNT");
         public static Asset DOCK => Cache.Get("DOCK");
         public static Asset DOGE => Cache.Get("DOGE");
+        public static Asset DREP => Cache.Get("DREP");
         public static Asset DUSK => Cache.Get("DUSK");
         public static Asset EDO => Cache.Get("EDO");
         public static Asset ELF => Cache.Get("ELF");
@@ -79,9 +86,11 @@ namespace Binance
         public static Asset ERD => Cache.Get("ERD");
         public static Asset ETC => Cache.Get("ETC");
         public static Asset ETH => Cache.Get("ETH");
+        public static Asset EUR => Cache.Get("EUR");
         public static Asset EVX => Cache.Get("EVX");
         public static Asset FET => Cache.Get("FET");
         public static Asset FTM => Cache.Get("FTM");
+        public static Asset FTT => Cache.Get("FTT");
         public static Asset FUEL => Cache.Get("FUEL");
         public static Asset FUN => Cache.Get("FUN");
         public static Asset GAS => Cache.Get("GAS");
@@ -91,6 +100,7 @@ namespace Binance
         public static Asset GTO => Cache.Get("GTO");
         public static Asset GVT => Cache.Get("GVT");
         public static Asset GXS => Cache.Get("GXS");
+        public static Asset HBAR => Cache.Get("HBAR");
         public static Asset HC => Cache.Get("HC");
         public static Asset HOT => Cache.Get("HOT");
         public static Asset HSR => Cache.Get("HSR");
@@ -100,6 +110,7 @@ namespace Binance
         public static Asset IOST => Cache.Get("IOST");
         public static Asset IOTA => Cache.Get("IOTA");
         public static Asset IOTX => Cache.Get("IOTX");
+        public static Asset KAVA => Cache.Get("KAVA");
         public static Asset KEY => Cache.Get("KEY");
         public static Asset KMD => Cache.Get("KMD");
         public static Asset KNC => Cache.Get("KNC");
@@ -125,10 +136,13 @@ namespace Binance
         public static Asset NCASH => Cache.Get("NCASH");
         public static Asset NEBL => Cache.Get("NEBL");
         public static Asset NEO => Cache.Get("NEO");
+        public static Asset NGN => Cache.Get("NGN");
+        public static Asset NKN => Cache.Get("NKN");
         public static Asset NPXS => Cache.Get("NPXS");
         public static Asset NULS => Cache.Get("NULS");
         public static Asset NXS => Cache.Get("NXS");
         public static Asset OAX => Cache.Get("OAX");
+        public static Asset OGN => Cache.Get("OGN");
         public static Asset OMG => Cache.Get("OMG");
         public static Asset ONE => Cache.Get("ONE");
         public static Asset ONG => Cache.Get("ONG");
@@ -155,6 +169,7 @@ namespace Binance
         public static Asset REQ => Cache.Get("REQ");
         public static Asset RLC => Cache.Get("RLC");
         public static Asset RPX => Cache.Get("RPX");
+        public static Asset RUB => Cache.Get("RUB");
         public static Asset RVN => Cache.Get("RVN");
         public static Asset SALT => Cache.Get("SALT");
         public static Asset SC => Cache.Get("SC");
@@ -166,15 +181,19 @@ namespace Binance
         public static Asset STORJ => Cache.Get("STORJ");
         public static Asset STORM => Cache.Get("STORM");
         public static Asset STRAT => Cache.Get("STRAT");
+        public static Asset STX => Cache.Get("STX");
         public static Asset SUB => Cache.Get("SUB");
         public static Asset SYS => Cache.Get("SYS");
+        public static Asset TCT => Cache.Get("TCT");
         public static Asset TFUEL => Cache.Get("TFUEL");
         public static Asset THETA => Cache.Get("THETA");
         public static Asset TNB => Cache.Get("TNB");
         public static Asset TNT => Cache.Get("TNT");
         public static Asset TOMO => Cache.Get("TOMO");
         public static Asset TRIG => Cache.Get("TRIG");
+        public static Asset TROY => Cache.Get("TROY");
         public static Asset TRX => Cache.Get("TRX");
+        public static Asset TRY => Cache.Get("TRY");
         public static Asset TUSD => Cache.Get("TUSD");
         public static Asset TUSDB => Cache.Get("TUSDB");
         public static Asset USDC => Cache.Get("USDC");
@@ -186,6 +205,7 @@ namespace Binance
         public static Asset VIA => Cache.Get("VIA");
         public static Asset VIB => Cache.Get("VIB");
         public static Asset VIBE => Cache.Get("VIBE");
+        public static Asset VITE => Cache.Get("VITE");
         public static Asset WABI => Cache.Get("WABI");
         public static Asset WAN => Cache.Get("WAN");
         public static Asset WAVES => Cache.Get("WAVES");
@@ -197,6 +217,7 @@ namespace Binance
         public static Asset XLM => Cache.Get("XLM");
         public static Asset XMR => Cache.Get("XMR");
         public static Asset XRP => Cache.Get("XRP");
+        public static Asset XTZ => Cache.Get("XTZ");
         public static Asset XVG => Cache.Get("XVG");
         public static Asset XZC => Cache.Get("XZC");
         public static Asset YOYO => Cache.Get("YOYO");
@@ -264,16 +285,20 @@ namespace Binance
                         new Asset("ARDR", 8),
                         new Asset("ARK", 8),
                         new Asset("ARN", 8),
+                        new Asset("ARPA", 8),
                         new Asset("AST", 8),
                         new Asset("ATOM", 8),
                         new Asset("BAND", 8),
                         new Asset("BAT", 8),
                         new Asset("BCC", 8),
                         new Asset("BCD", 8),
+                        new Asset("BCH", 8),
                         new Asset("BCHABC", 8),
                         new Asset("BCHSV", 8),
                         new Asset("BCN", 8),
                         new Asset("BCPT", 8),
+                        new Asset("BEAM", 8),
+                        new Asset("BEAR", 8),
                         new Asset("BGBP", 8),
                         new Asset("BLZ", 8),
                         new Asset("BNB", 8),
@@ -285,6 +310,7 @@ namespace Binance
                         new Asset("BTG", 8),
                         new Asset("BTS", 8),
                         new Asset("BTT", 8),
+                        new Asset("BULL", 8),
                         new Asset("BUSD", 8),
                         new Asset("CDT", 8),
                         new Asset("CELR", 8),
@@ -295,6 +321,7 @@ namespace Binance
                         new Asset("CND", 8),
                         new Asset("COCOS", 8),
                         new Asset("COS", 8),
+                        new Asset("CTXC", 8),
                         new Asset("CVC", 8),
                         new Asset("DASH", 8),
                         new Asset("DATA", 8),
@@ -305,6 +332,7 @@ namespace Binance
                         new Asset("DNT", 8),
                         new Asset("DOCK", 8),
                         new Asset("DOGE", 8),
+                        new Asset("DREP", 8),
                         new Asset("DUSK", 8),
                         new Asset("EDO", 8),
                         new Asset("ELF", 8),
@@ -314,9 +342,11 @@ namespace Binance
                         new Asset("ERD", 8),
                         new Asset("ETC", 8),
                         new Asset("ETH", 8),
+                        new Asset("EUR", 8),
                         new Asset("EVX", 8),
                         new Asset("FET", 8),
                         new Asset("FTM", 8),
+                        new Asset("FTT", 8),
                         new Asset("FUEL", 8),
                         new Asset("FUN", 8),
                         new Asset("GAS", 8),
@@ -326,6 +356,7 @@ namespace Binance
                         new Asset("GTO", 8),
                         new Asset("GVT", 8),
                         new Asset("GXS", 8),
+                        new Asset("HBAR", 8),
                         new Asset("HC", 8),
                         new Asset("HOT", 8),
                         new Asset("HSR", 8),
@@ -335,6 +366,7 @@ namespace Binance
                         new Asset("IOST", 8),
                         new Asset("IOTA", 8),
                         new Asset("IOTX", 8),
+                        new Asset("KAVA", 8),
                         new Asset("KEY", 8),
                         new Asset("KMD", 8),
                         new Asset("KNC", 8),
@@ -360,10 +392,13 @@ namespace Binance
                         new Asset("NCASH", 8),
                         new Asset("NEBL", 8),
                         new Asset("NEO", 8),
+                        new Asset("NGN", 8),
+                        new Asset("NKN", 8),
                         new Asset("NPXS", 8),
                         new Asset("NULS", 8),
                         new Asset("NXS", 8),
                         new Asset("OAX", 8),
+                        new Asset("OGN", 8),
                         new Asset("OMG", 8),
                         new Asset("ONE", 8),
                         new Asset("ONG", 8),
@@ -390,6 +425,7 @@ namespace Binance
                         new Asset("REQ", 8),
                         new Asset("RLC", 8),
                         new Asset("RPX", 8),
+                        new Asset("RUB", 8),
                         new Asset("RVN", 8),
                         new Asset("SALT", 8),
                         new Asset("SC", 8),
@@ -401,15 +437,19 @@ namespace Binance
                         new Asset("STORJ", 8),
                         new Asset("STORM", 8),
                         new Asset("STRAT", 8),
+                        new Asset("STX", 8),
                         new Asset("SUB", 8),
                         new Asset("SYS", 8),
+                        new Asset("TCT", 8),
                         new Asset("TFUEL", 8),
                         new Asset("THETA", 8),
                         new Asset("TNB", 8),
                         new Asset("TNT", 8),
                         new Asset("TOMO", 8),
                         new Asset("TRIG", 8),
+                        new Asset("TROY", 8),
                         new Asset("TRX", 8),
+                        new Asset("TRY", 8),
                         new Asset("TUSD", 8),
                         new Asset("TUSDB", 8),
                         new Asset("USDC", 8),
@@ -421,6 +461,7 @@ namespace Binance
                         new Asset("VIA", 8),
                         new Asset("VIB", 8),
                         new Asset("VIBE", 8),
+                        new Asset("VITE", 8),
                         new Asset("WABI", 8),
                         new Asset("WAN", 8),
                         new Asset("WAVES", 8),
@@ -432,6 +473,7 @@ namespace Binance
                         new Asset("XLM", 8),
                         new Asset("XMR", 8),
                         new Asset("XRP", 8),
+                        new Asset("XTZ", 8),
                         new Asset("XVG", 8),
                         new Asset("XZC", 8),
                         new Asset("YOYO", 8),

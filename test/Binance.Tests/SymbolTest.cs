@@ -17,20 +17,21 @@ namespace Binance.Tests
             var priceRange = new InclusiveRange(0.01m, 100.0m, 0.01m);
             const decimal minNotionalValue = 0.001m;
             const bool isIcebergAllowed = true;
+            const bool quoteOrderQtyMarketAllowed = true;
             var orderTypes = new [] { OrderType.Limit, OrderType.Market };
 
-            Assert.Throws<ArgumentNullException>("baseAsset", () => new Symbol(status, null, quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes));
-            Assert.Throws<ArgumentNullException>("quoteAsset", () => new Symbol(status, baseAsset, null, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes));
-            Assert.Throws<ArgumentNullException>("quantity", () => new Symbol(status, baseAsset, quoteAsset, null, priceRange, minNotionalValue, isIcebergAllowed, orderTypes));
-            Assert.Throws<ArgumentNullException>("price", () => new Symbol(status, baseAsset, quoteAsset, quantityRange, null, minNotionalValue, isIcebergAllowed, orderTypes));
-            Assert.Throws<ArgumentNullException>("orderTypes", () => new Symbol(status, baseAsset, quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, null));
+            Assert.Throws<ArgumentNullException>("baseAsset", () => new Symbol(status, null, quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes, quoteOrderQtyMarketAllowed));
+            Assert.Throws<ArgumentNullException>("quoteAsset", () => new Symbol(status, baseAsset, null, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes, quoteOrderQtyMarketAllowed));
+            Assert.Throws<ArgumentNullException>("quantity", () => new Symbol(status, baseAsset, quoteAsset, null, priceRange, minNotionalValue, isIcebergAllowed, orderTypes, quoteOrderQtyMarketAllowed));
+            Assert.Throws<ArgumentNullException>("price", () => new Symbol(status, baseAsset, quoteAsset, quantityRange, null, minNotionalValue, isIcebergAllowed, orderTypes, quoteOrderQtyMarketAllowed));
+            Assert.Throws<ArgumentNullException>("orderTypes", () => new Symbol(status, baseAsset, quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, null, quoteOrderQtyMarketAllowed));
         }
 
         [Fact]
         public void ImplicitOperators()
         {
             var symbol1 = Symbol.BTC_USDT;
-            var symbol2 = new Symbol(symbol1.Status, symbol1.BaseAsset, symbol1.QuoteAsset, symbol1.Quantity, symbol1.Price, symbol1.NotionalMinimumValue, symbol1.IsIcebergAllowed, symbol1.OrderTypes);
+            var symbol2 = new Symbol(symbol1.Status, symbol1.BaseAsset, symbol1.QuoteAsset, symbol1.Quantity, symbol1.Price, symbol1.NotionalMinimumValue, symbol1.IsIcebergAllowed, symbol1.OrderTypes, symbol1.QuoteOrderQtyMarketAllowed);
             var symbol3 = Symbol.XRP_USDT;
 
             Assert.True(symbol1 == symbol2);
@@ -46,9 +47,10 @@ namespace Binance.Tests
             var priceRange = new InclusiveRange(0.01m, 100.0m, 0.01m);
             const decimal minNotionalValue = 0.001m;
             const bool isIcebergAllowed = true;
+            const bool quoteOrderQtyMarketAllowed = true;
             var orderTypes = new[] { OrderType.Limit, OrderType.Market };
 
-            var newSymbol = new Symbol(SymbolStatus.Trading, baseAsset, quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes);
+            var newSymbol = new Symbol(SymbolStatus.Trading, baseAsset, quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes, quoteOrderQtyMarketAllowed);
 
             Assert.True(newSymbol == baseAsset.Symbol + quoteAsset.Symbol);
         }
@@ -63,9 +65,10 @@ namespace Binance.Tests
             var priceRange = new InclusiveRange(0.01m, 100.0m, 0.01m);
             const decimal minNotionalValue = 0.001m;
             const bool isIcebergAllowed = true;
+            const bool quoteOrderQtyMarketAllowed = true;
             var orderTypes = new [] { OrderType.Limit, OrderType.Market };
 
-            var symbol = new Symbol(status, baseAsset, quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes);
+            var symbol = new Symbol(status, baseAsset, quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes, quoteOrderQtyMarketAllowed);
 
             Assert.Equal(status, symbol.Status);
             Assert.Equal(baseAsset, symbol.BaseAsset);
@@ -85,10 +88,11 @@ namespace Binance.Tests
             var priceRange = new InclusiveRange(0.01m, 100.0m, 0.01m);
             const decimal minNotionalValue = 0.001m;
             const bool isIcebergAllowed = true;
+            const bool quoteOrderQtyMarketAllowed = true;
             var orderTypes = new [] { OrderType.Limit, OrderType.Market };
 
             var validSymbol = Symbol.BTC_USDT;
-            var invalidSymbol = new Symbol(status, new Asset("...", 0), quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes);
+            var invalidSymbol = new Symbol(status, new Asset("...", 0), quoteAsset, quantityRange, priceRange, minNotionalValue, isIcebergAllowed, orderTypes, quoteOrderQtyMarketAllowed);
 
             Assert.True(Symbol.IsValid(validSymbol));
             Assert.False(Symbol.IsValid(invalidSymbol));
